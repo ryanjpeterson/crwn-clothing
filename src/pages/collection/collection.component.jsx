@@ -1,13 +1,26 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import { selectCollection } from "../../redux/shop/shop.selectors";
+import { selectCollection } from '../../redux/shop/shop.selectors';
 
-import CollectionItem from "../../components/collection-item/collection-item.component";
+import CollectionItem from '../../components/collection-item/collection-item.component';
 
-import "./collection.styles.scss";
+import './collection.styles.scss';
+import { firestore } from '../../firebase/firebase.utils';
 
 const CollectionPage = ({ collection }) => {
+  // useEffect(() => {
+  //   console.log('subscribing');
+  //   const unsubscribeFromCollections = firestore
+  //     .collection('collections')
+  //     .onSnapshot((snapshot) => console.log(snapshot));
+
+  //   return () => {
+  //     console.log('unsubscribed');
+  //     unsubscribeFromCollections();
+  //   };
+  // }, []);
+
   const { title, items } = collection;
 
   return (
